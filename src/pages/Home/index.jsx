@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { avatar } from '../../data/Constants'
+import { avatar, prevIcon, nextIcon } from '../../data/Constants'
 import navLinks from '../../data/navLinks'
 import products from '../../data/products'
 
@@ -9,6 +9,7 @@ import HarmburgerBtn from './HarmburgerBtn'
 import CartBtn from './CartBtn'
 import Logo from './Logo'
 import Nav from './Nav'
+import CarouselNavButton from './CarouselNavButton'
 
 export default function Home() {
 	console.log(products[0].imgs)
@@ -42,7 +43,7 @@ export default function Home() {
 				<section
 					className="
 						flex
-						md:mx-16 md:py-12 lg:mx-32
+						md:px-16 md:py-12 lg:mx-32
 					"
 				>
 					<ProductCarousel productImgs={products[0].imgs}/>
@@ -56,25 +57,46 @@ export default function Home() {
 function ProductCarousel({productImgs=[]}) {
 	const [activeImg, setActiveImg] = useState(0)
 
+	const goToNextImg = (ndx) => {
+		const numOfProductImgs = productImgs.length
+		setActiveImg((ndx % numOfProductImgs + numOfProductImgs) % numOfProductImgs)
+	}
+
 	return(
 		<div
 			className="
 				md:w-1/2 flex flex-col items-center
 			"
 		>
-			{productImgs.map((productImg, ndx) => (
-				<img 
-					key={ndx} 
-					src={productImg.img} 
-					alt="product"
-					width={450}
-					height={'auto'}
-					className={`
-						${ndx !== activeImg ? 'hidden' : ''}
-						md:rounded-md max-md:w-full
-					`}
-				/>
-			))}
+			<div className='relative'>
+				{productImgs.map((productImg, ndx) => (
+					<img 
+						key={ndx} 
+						src={productImg.img} 
+						alt="product"
+						width={450}
+						height={'auto'}
+						className={`
+							${ndx !== activeImg ? 'hidden' : ''}
+							md:rounded-md max-md:w-full
+						`}
+					/>
+				))}
+				<div className='
+					md:hidden
+					absolute top-0 w-full h-full
+					flex items-center justify-between px-6
+				'>
+					<CarouselNavButton 
+						icon={prevIcon} 
+						handleClick={() => {goToNextImg(activeImg - 1)}}
+					/>
+					<CarouselNavButton 
+						icon={nextIcon} 
+						handleClick={() => {goToNextImg(activeImg + 1)}}
+					/>
+				</div>
+			</div>
 			<ul className="flex gap-7 mt-7 max-md:hidden">
 				{productImgs.map((productImg, ndx)=>(
 					<li
