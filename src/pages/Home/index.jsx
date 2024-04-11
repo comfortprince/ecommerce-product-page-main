@@ -1,4 +1,4 @@
-import { logo } from '../../data/Constants'
+import { logo, cartIcon, avatar } from '../../data/Constants'
 import navLinks from '../../data/navLinks'
 
 export default function Home() {
@@ -17,11 +17,56 @@ export default function Home() {
 					<Logo/>
 					<Nav/>
 				</div>
+				<div 
+					className="
+						flex gap-8 justify-end flex-grow
+					"
+				>
+					<CartBtn/>
+					<Avatar/>	
+				</div>
 			</header>
 			<main>
 				
 			</main>
 		</>
+	)
+}
+
+function CartBtn({numOfItemsInCart = 3}) {
+	return(
+		<button className="relative self-center">
+			{numOfItemsInCart ? 
+				<span 
+					className="text-white absolute -top-2 left-2 bg-orange px-2 text-xs rounded-lg"
+				>
+					{numOfItemsInCart}
+				</span> :
+				''
+			}
+
+			<img 
+				className="self-center"
+				src={cartIcon} 
+				alt="Cart Icon"
+			/>
+		</button>
+	)
+}
+
+function Avatar() {
+	return(
+		<img
+			className="
+				self-center rounded-full cursor-pointer
+				border-2 border-black border-opacity-0 hover:border-orange hover:border-opacity-100 
+				transition-all duration-300
+			" 
+			src={avatar} 
+			alt="Avatar"
+			width="40rem"
+			height="40rem"
+		/>
 	)
 }
 
