@@ -1,4 +1,4 @@
-import { logo, cartIcon, avatar } from '../../data/Constants'
+import { logo, cartIcon, avatar, harmburgerIcon } from '../../data/Constants'
 import navLinks from '../../data/navLinks'
 
 export default function Home() {
@@ -6,14 +6,15 @@ export default function Home() {
 		<>
 			<header 
 				className="
-					md:mx-16 lg:mx-32
+					px-4 py-4 md:mx-16 lg:mx-32
 					flex
 					border-b-2 border-light-grayish-blue
 				"
 			>
 				<div
-					className="flex justify-between gap-12"
+					className="flex justify-between gap-6 md:gap-12"
 				>
+					<HarmburgerBtn/>
 					<Logo/>
 					<Nav/>
 				</div>
@@ -30,6 +31,14 @@ export default function Home() {
 				
 			</main>
 		</>
+	)
+}
+
+function HarmburgerBtn() {
+	return(
+		<button className="self-center md:hidden">
+			<img src={harmburgerIcon} alt="Navbar Toggler"/>
+		</button>
 	)
 }
 
