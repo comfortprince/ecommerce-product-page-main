@@ -10,11 +10,13 @@ import CartBtn from './CartBtn'
 import Cart from './Cart'
 import Logo from './Logo'
 import Nav from './Nav'
+import SideBar from './SideBar'
 import ProductCarousel from './ProductCarousel'
 import ProductDetails from './ProductDetails'
 
 export default function Home() {
 	const [cartVisibility, setCartVisibility] = useState(false)
+	const [sideBarVisibility, setSideBarVisibility] = useState(false)
 	const selectedProducts = [{
 		"id": products[0].id,
 		"quantity": 3
@@ -32,7 +34,7 @@ export default function Home() {
 				<div
 					className="flex justify-between gap-6 md:gap-12"
 				>
-					<HarmburgerBtn />
+					<HarmburgerBtn toggleSideBar={() => {setSideBarVisibility(true)}}/>
 					<Logo/>
 					<Nav navLinks={navLinks}/>
 				</div>
@@ -52,6 +54,11 @@ export default function Home() {
 					availableProducts={products}
 					cartVisibility={cartVisibility}
 					closeCart={() => {setCartVisibility(false)}}
+				/>
+				<SideBar 
+					navLinks={navLinks}
+					sideBarVisibility={sideBarVisibility}
+					closeSideBar={() => {setSideBarVisibility(false)}}
 				/>
 			</header>
 			<main>
