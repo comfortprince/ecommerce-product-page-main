@@ -4,6 +4,7 @@ import avatar from '../../assets/images/image-avatar.png'
 import harmburgerIcon from '../../assets/icons/icon-menu.svg'
 import prevIcon from '../../assets/icons/icon-previous.svg'
 import nextIcon from '../../assets/icons/icon-next.svg'
+import closeIcon from '../../assets/icons/icon-close.svg'
 
 const companyName = "Sneaker Company"
 
@@ -14,5 +15,6 @@ export {
 	avatar,
 	harmburgerIcon,
 	prevIcon,
-	nextIcon
+	nextIcon,
+	closeIcon
 }
