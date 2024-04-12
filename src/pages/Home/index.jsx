@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { avatar } from '../../data/Constants'
 import navLinks from '../../data/navLinks'
 import products from '../../data/products'
@@ -5,18 +7,25 @@ import products from '../../data/products'
 import Avatar from './Avatar'
 import HarmburgerBtn from './HarmburgerBtn'
 import CartBtn from './CartBtn'
+import Cart from './Cart'
 import Logo from './Logo'
 import Nav from './Nav'
 import ProductCarousel from './ProductCarousel'
 import ProductDetails from './ProductDetails'
 
 export default function Home() {
+	const [cartVisibility, setCartVisibility] = useState(false)
+	const selectedProducts = [{
+		"id": products[0].id,
+		"quantity": 3
+	}]
+
 	return(
 		<>
 			<header 
 				className="
 					max-md:px-4 max-md:py-4 md:mx-16 lg:mx-32
-					flex
+					flex relative
 					border-b-2 border-light-grayish-blue
 				"
 			>
@@ -32,9 +41,18 @@ export default function Home() {
 						flex gap-8 justify-end flex-grow
 					"
 				>
-					<CartBtn numOfItemsInCart={"2"}/>
+					<CartBtn 
+						numOfItemsInCart={"2"}
+						openCart={() => {setCartVisibility(true)}}
+					/>
 					<Avatar avatar={avatar}/>	
 				</div>
+				<Cart 
+					selectedProducts={selectedProducts}
+					availableProducts={products}
+					cartVisibility={cartVisibility}
+					closeCart={() => {setCartVisibility(false)}}
+				/>
 			</header>
 			<main>
 				<section

@@ -9,12 +9,14 @@ import product4Thumbnail from '../assets/images/image-product-4-thumbnail.jpg'
 
 const products = [
 	{
+		"id": "1",
 		"name": "Fall Limited Edition Sneakers",
 		"description": "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
 		"price": "125",
 		"discount": "50",
 		"oldPrice": "250",
 		"companyName": "Sneaker Company",
+		"thumbnail": `${product1Thumbnail}`,
 		"imgs": [
 			{
 				"img": `${product1}`,

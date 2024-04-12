@@ -1,8 +1,11 @@
 import { cartIcon } from '../../data/Constants'
 
-export default function CartBtn({numOfItemsInCart}) {
+export default function CartBtn({numOfItemsInCart, openCart}) {
 	return(
-		<button className="relative self-center">
+		<button 
+			className="relative self-center"
+			onClick={openCart}
+		>
 			{numOfItemsInCart ? 
 				<span 
 					className="text-white absolute -top-2 left-2 bg-orange px-2 text-xs rounded-lg"
