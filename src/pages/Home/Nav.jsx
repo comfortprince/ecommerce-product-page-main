@@ -3,8 +3,9 @@ export default function Nav({navLinks}) {
 		<nav
 			className="flex gap-6 max-md:hidden"
 		>
-			{navLinks.map((link) => (
-				<a 
+			{navLinks.map((link, ndx) => (
+				<a
+					key={ndx} 
 					href="#!"
 					className="
 						py-6 cursor-pointer text-sm

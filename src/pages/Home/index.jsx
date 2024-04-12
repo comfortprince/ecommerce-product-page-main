@@ -8,6 +8,7 @@ import CartBtn from './CartBtn'
 import Logo from './Logo'
 import Nav from './Nav'
 import ProductCarousel from './ProductCarousel'
+import ProductDetails from './ProductDetails'
 
 export default function Home() {
 	return(
@@ -38,18 +39,14 @@ export default function Home() {
 			<main>
 				<section
 					className="
-						flex
+						md:flex justify-between gap-4
 						md:px-16 md:py-12 lg:mx-32
 					"
 				>
 					<ProductCarousel productImgs={products[0].imgs}/>
-					<ProductDetails/>
+					<ProductDetails product={products[0]}/>
 				</section>
 			</main>
 		</>
 	)
-}
-
-function ProductDetails() {
-	// body...
 }
