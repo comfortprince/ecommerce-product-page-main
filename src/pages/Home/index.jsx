@@ -24,6 +24,7 @@ export default function Home() {
 		<>
 			<header 
 				className="
+					max-w-[1440px]
 					max-md:px-4 max-md:py-4 md:mx-16 lg:mx-32
 					flex sticky top-0 bg-white z-10
 					border-b-2 border-light-grayish-blue
@@ -60,7 +61,7 @@ export default function Home() {
 					closeSideBar={() => {setSideBarVisibility(false)}}
 				/>
 			</header>
-			<main>
+			<main className="max-w-[1440px]">
 				<section
 					className="
 						md:flex justify-between gap-4
