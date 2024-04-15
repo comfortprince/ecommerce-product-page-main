@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 import PrimaryBtn from './PrimaryBtn'
 import RemoveBtn from './RemoveBtn'
 
@@ -8,6 +10,67 @@ export default function Cart({
 	cartVisibility,
 	closeCart
 }) {
+	const cartRef = useRef(null)
+	const backdropRef = useRef(null)
+
+	useEffect(() => {
+		cartRef.current.style.top = `-${cartRef.current.clientHeight}px`
+		cartRef.current.classList.remove('invisible')
+	}, [])
+
+	useEffect(() => {
+		const CART_OFFSET = 90
+		const timings = {
+			duration: 300,
+			iterations: 1,
+			fill: 'forwards',
+			easing: 'ease-in-out'
+		}
+
+		const slideOut = [{
+			top: ''
+		},{
+			top: `-${cartRef.current.clientHeight}px`
+		}]
+
+		const slideIn = [{
+			top: ''
+		},{
+			top: `${CART_OFFSET}px`
+		}]
+
+		const fadeIn = [{
+			backgroundColor: 'rgba(0,0,0,0)'
+		},{
+			backgroundColor: 'rgba(0,0,0,0.7)'
+		}]
+		const fadeOut = [{
+			backgroundColor: 'rgba(0,0,0,0.7)'
+		},{
+			backgroundColor: 'rgba(0,0,0,0)'
+		}]
+
+		if(cartVisibility){
+			// slide cart in
+			cartRef.current.animate(slideIn,timings)
+
+			// fade in backdrop
+			backdropRef.current.classList.add('block')
+			backdropRef.current.classList.remove('hidden')
+			backdropRef.current.animate(fadeIn, timings)
+		}else {
+			// slide cart out
+			cartRef.current.animate(slideOut,timings)
+		
+			// fade out backdrop
+			backdropRef.current.animate(fadeOut, timings)
+			setTimeout(()=>{
+				backdropRef.current.classList.remove('block')
+				backdropRef.current.classList.add('hidden')
+			}, timings.duration)
+		}
+	}, [cartVisibility])	
+
 	const deleteProduct = productId => {
 		setProductsInCart(productsInCart.filter(productInCart => productInCart.id === productId))
 	}
@@ -16,26 +79,23 @@ export default function Cart({
 		<>
 			{/*Backdrop*/}
 			<div 
+				ref={backdropRef}
 				className={`
-					fixed w-full h-full top-0 left-0 bg-black bg-opacity-75 z-10 cursor-pointer
-					${cartVisibility ? '' : 'hidden'}
+					fixed w-full h-full top-0 left-0 bg-black bg-opacity-0 z-10 cursor-pointer
+					hidden
 				`}
 				onClick={closeCart}
 			>
 			</div>
 			
 			<div
+				ref={cartRef}
 				className={`
 					inline-block max-md:w-full md:min-w-60 absolute max-md:left-0 
-					top-[5.6rem] md:top-16 md:right-0 z-20 px-5
-					${cartVisibility ? '' : 'hidden'}
+					md:top-16 md:right-0 z-20 px-5 invisible
 				`}
 			>
-				<div 
-					className=" 
-						bg-white rounded-md shadow-2xl
-					"
-				>
+				<div className="bg-white rounded-md">
 					<div className="p-6 font-bold text-sm border-b-2 border-light-grayish-blue">
 						Cart
 					</div>
