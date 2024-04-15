@@ -27,7 +27,7 @@ export default function Home() {
 			<header 
 				className="
 					max-md:px-4 max-md:py-4 md:mx-16 lg:mx-32
-					flex relative
+					flex sticky top-0 bg-white z-10
 					border-b-2 border-light-grayish-blue
 				"
 			>

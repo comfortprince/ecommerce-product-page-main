@@ -51,7 +51,7 @@ export default function SideBar({
 			{/*Backdrop*/}
 			{sideBarVisibility &&
 			<div 
-				className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 z-10"
+				className="fixed top-0 left-0 md:hidden w-full h-full bg-black bg-opacity-75 z-10"
 				onClick={closeSideBar}
 			></div>
 			}
@@ -59,7 +59,7 @@ export default function SideBar({
 			<section 
 				ref={sideBarRef}
 				className={`
-					fixed top-0 -left-96 w-2/3 h-full z-20 bg-white
+					fixed top-0 -left-[100%] md:hidden w-2/3 h-full z-20 bg-white
 				`}
 			>
 				<div className="pl-4 pt-6 pb-6">
