@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-import PrimaryBtn from './PrimaryBtn'
+import PrimaryBtn from '../Commons/PrimaryBtn'
 import RemoveBtn from './RemoveBtn'
 
 export default function Cart({
@@ -14,12 +14,8 @@ export default function Cart({
 	const backdropRef = useRef(null)
 
 	useEffect(() => {
-		cartRef.current.style.top = `-${cartRef.current.clientHeight}px`
-		cartRef.current.classList.remove('invisible')
-	}, [])
-
-	useEffect(() => {
 		const CART_OFFSET = 90
+
 		const timings = {
 			duration: 300,
 			iterations: 1,
@@ -52,13 +48,14 @@ export default function Cart({
 
 		if(cartVisibility){
 			// slide cart in
+			cartRef.current.classList.remove('hidden')
 			cartRef.current.animate(slideIn,timings)
 
 			// fade in backdrop
 			backdropRef.current.classList.add('block')
 			backdropRef.current.classList.remove('hidden')
 			backdropRef.current.animate(fadeIn, timings)
-		}else {
+		} else {
 			// slide cart out
 			cartRef.current.animate(slideOut,timings)
 		
@@ -67,6 +64,7 @@ export default function Cart({
 			setTimeout(()=>{
 				backdropRef.current.classList.remove('block')
 				backdropRef.current.classList.add('hidden')
+				cartRef.current.classList.add('hidden')
 			}, timings.duration)
 		}
 	}, [cartVisibility])	
@@ -92,7 +90,7 @@ export default function Cart({
 				ref={cartRef}
 				className={`
 					inline-block max-md:w-full md:min-w-60 absolute max-md:left-0 
-					md:top-16 md:right-0 z-20 px-5 invisible
+					md:top-16 md:right-0 z-20 px-5 hidden
 				`}
 			>
 				<div className="bg-white rounded-md">

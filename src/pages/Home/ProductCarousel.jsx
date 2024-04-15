@@ -2,8 +2,8 @@ import { useState } from 'react'
 
 import { prevIcon, nextIcon } from '../../data/Constants'
 
-import CarouselNavButton from './CarouselNavButton'
-import LightBox from './LightBox'
+import CarouselNavButton from '../../components/ProductCarousel/CarouselNavButton'
+import LightBox from '../../components/ProductCarousel/LightBox'
 
 export default function ProductCarousel({productImgs=[]}) {
 	const [activeImg, setActiveImg] = useState(0)

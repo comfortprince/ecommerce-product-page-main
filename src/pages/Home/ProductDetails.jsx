@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import PrimaryBtn from './PrimaryBtn'
-import QuantityInput from './QuantityInput'
+import PrimaryBtn from '../../components/Commons/PrimaryBtn'
+import QuantityInput from '../../components/ProductDetails/QuantityInput'
 
 export default function ProductDetails({
 	product,
