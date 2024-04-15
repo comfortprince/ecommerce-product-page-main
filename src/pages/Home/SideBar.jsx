@@ -8,43 +8,42 @@ export default function SideBar({
 	closeSideBar
 }) {
 	const sideBarRef = useRef(null)
-	const didMount = useRef(0)
+
+	useEffect(()=>{
+		const sideBar = sideBarRef.current
+
+		sideBar.classList.remove('invisible')
+		sideBar.classList.remove('hidden')
+		sideBar.style.left = `-${sideBar.clientWidth}px`
+	}, [])
 
 	useEffect(() => {
-		const NUM_OF_RERENDERS = 2
-
 		const sideBar = sideBarRef.current
 		const slideDistance = sideBar.clientWidth
 
-		if(didMount.current < NUM_OF_RERENDERS){
-			sideBar.classList.remove('invisible')
-			sideBar.style.left = `-${sideBar.clientWidth}px`
-			didMount.current++
-			return
+		const timings = {
+			duration: 300,
+			iterations: 1,
+			fill: 'forwards',
+			easing: 'ease-in-out'
 		}
 
+		const slideIn = [{
+			left: `-${slideDistance}px`
+		},{
+			left: `0px`
+		}]
+
+		const slideOut = [{
+			left: ``
+		},{
+			left: `-${slideDistance}px`
+		}]
+
 		if(sideBarVisibility){
-			sideBar.animate([{
-				left: `-${slideDistance}px`
-			},{
-				left: `0px`
-			}],{
-				duration: 300,
-				iterations: 1,
-				fill: 'forwards',
-				easing: 'ease-in-out'
-			})
+			sideBar.animate(slideIn, timings)
 		}else{
-			sideBar.animate([{
-				left: `0px`
-			},{
-				left: `-${slideDistance}px`
-			}],{
-				duration: 300,
-				iterations: 1,
-				fill: 'forwards',
-				easing: 'ease-in-out'
-			})
+			sideBar.animate(slideOut, timings)
 		}
 	}, [sideBarVisibility])
 
@@ -61,7 +60,7 @@ export default function SideBar({
 			<section 
 				ref={sideBarRef}
 				className={`
-					fixed top-0 md:hidden w-2/3 h-full z-20 bg-white invisible
+					fixed top-0 hidden md:hidden w-2/3 h-full z-20 bg-white
 				`}
 			>
 				<div className="pl-4 pt-6 pb-6">
