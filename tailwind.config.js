@@ -17,7 +17,20 @@ module.exports = {
 				'light-grayish-blue': 'hsl(223, 64%, 98%)',
 				'white': 'hsl(0, 0%, 100%)',
 				'black' : 'hsl(0, 0%, 0%)', 		// (with 75% opacity for lightbox background)
-    	}
+    	},
+      keyframes: {
+        sidebarSlideOut: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' }
+        },
+        sidebarSlideIn: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0%)' }
+        }
+      },
+      animation: {
+        'sidebarSlideIn': 'sidebarSlideIn 0.3s linear forwards'
+      }
     },
   },
   plugins: [],

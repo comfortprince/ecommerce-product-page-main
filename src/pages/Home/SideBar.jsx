@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 import SideBarCloseBtn from './SideBarCloseBtn'
 
 export default function SideBar({
@@ -5,6 +7,45 @@ export default function SideBar({
 	sideBarVisibility,
 	closeSideBar
 }) {
+	const sideBarRef = useRef(null)
+	const didMount = useRef(0)
+
+	useEffect(() => {
+		const NUM_OF_RERENDERS = 2
+
+		const sideBar = sideBarRef.current
+		const slideDistance = sideBar.clientWidth
+
+		if(didMount.current < NUM_OF_RERENDERS){
+			didMount.current++
+			return
+		}
+
+		if(sideBarVisibility){
+			sideBar.animate([{
+				left: `-${slideDistance}px`
+			},{
+				left: `0px`
+			}],{
+				duration: 300,
+				iterations: 1,
+				fill: 'forwards',
+				easing: 'ease-in-out'
+			})
+		}else{
+			sideBar.animate([{
+				left: `0px`
+			},{
+				left: `-${slideDistance}px`
+			}],{
+				duration: 300,
+				iterations: 1,
+				fill: 'forwards',
+				easing: 'ease-in-out'
+			})
+		}
+	}, [sideBarVisibility])
+
 	return(
 		<>
 			{/*Backdrop*/}
@@ -15,9 +56,11 @@ export default function SideBar({
 			></div>
 			}
 
-			{sideBarVisibility && 
 			<section 
-				className="fixed top-0 left-0 w-2/3 h-full z-20 bg-white"
+				ref={sideBarRef}
+				className={`
+					fixed top-0 -left-96 w-2/3 h-full z-20 bg-white
+				`}
 			>
 				<div className="pl-4 pt-6 pb-6">
 					<SideBarCloseBtn handleClick={closeSideBar}/>
@@ -35,7 +78,7 @@ export default function SideBar({
 						</a>
 					))}
 				</nav>
-			</section>}
+			</section>
 		</>
 	)
 }

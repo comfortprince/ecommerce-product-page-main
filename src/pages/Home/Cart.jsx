@@ -48,7 +48,7 @@ export default function Cart({
 										const totalPrice = product.price * productQty
 
 										return (
-											<div className="flex gap-4">
+											<div key={product.id} className="flex gap-4">
 												<img 
 													src={product.thumbnail}
 													alt={'product thumbnail'}
