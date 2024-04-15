@@ -1,6 +1,6 @@
-export default function RemoveBtn() {
+export default function RemoveBtn({handleClick}) {
 	return (
-		<button>
+		<button onClick={handleClick}>
 			<svg 
 				width="14" 
 				height="16" 

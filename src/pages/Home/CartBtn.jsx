@@ -1,6 +1,12 @@
 import { cartIcon } from '../../data/Constants'
 
-export default function CartBtn({numOfItemsInCart, openCart}) {
+export default function CartBtn({productsInCart, openCart}) {
+	let numOfItemsInCart = 0
+
+	productsInCart.forEach(product => {
+		numOfItemsInCart += product.qty
+	})
+
 	return(
 		<button 
 			className="relative self-center"

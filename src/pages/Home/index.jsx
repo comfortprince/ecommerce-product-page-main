@@ -17,10 +17,7 @@ import ProductDetails from './ProductDetails'
 export default function Home() {
 	const [cartVisibility, setCartVisibility] = useState(false)
 	const [sideBarVisibility, setSideBarVisibility] = useState(false)
-	const selectedProducts = [{
-		"id": products[0].id,
-		"quantity": 3
-	}]
+	const [productsInCart, setProductsInCart] = useState([])
 
 	return(
 		<>
@@ -44,13 +41,14 @@ export default function Home() {
 					"
 				>
 					<CartBtn 
-						numOfItemsInCart={"2"}
+						productsInCart={productsInCart}
 						openCart={() => {setCartVisibility(true)}}
 					/>
 					<Avatar avatar={avatar}/>	
 				</div>
 				<Cart 
-					selectedProducts={selectedProducts}
+					productsInCart={productsInCart}
+					setProductsInCart={setProductsInCart}
 					availableProducts={products}
 					cartVisibility={cartVisibility}
 					closeCart={() => {setCartVisibility(false)}}
@@ -69,7 +67,11 @@ export default function Home() {
 					"
 				>
 					<ProductCarousel productImgs={products[0].imgs}/>
-					<ProductDetails product={products[0]}/>
+					<ProductDetails 
+						product={products[0]} 
+						productsInCart={productsInCart}
+						setProductsInCart={setProductsInCart}
+					/>
 				</section>
 			</main>
 		</>

@@ -1,7 +1,28 @@
+import { useState } from 'react'
+
 import PrimaryBtn from './PrimaryBtn'
 import QuantityInput from './QuantityInput'
 
-export default function ProductDetails({product}) {
+export default function ProductDetails({
+	product,
+	productsInCart,
+	setProductsInCart,
+}) {
+	const [quantity, setQuantity] = useState(0)
+	const addToCart = () => {
+		const productInCart = productsInCart.find(productInCart => productInCart.id === product.id )
+		const oldQty = productInCart ? productInCart.qty : 0
+		const newQty = oldQty + quantity
+
+		const newProductsInCart = productsInCart.filter(prod => prod.id !== product.id)
+		
+		setProductsInCart([...newProductsInCart, {
+			id: product.id,
+			qty: newQty
+		}])
+		setQuantity(0)
+	}
+
 	return(
 		<div className="md:w-96 md:pt-16 max-md:p-6">
 			<div
@@ -29,8 +50,15 @@ export default function ProductDetails({product}) {
 				</span>
 			</div>
 			<div className="flex flex-col md:flex-row gap-4 mt-6">
-				<QuantityInput className="py-2"/>
-				<PrimaryBtn className="flex-grow py-2">
+				<QuantityInput 
+					className="py-2"
+					quantity={quantity}
+					setQuantity={setQuantity}
+				/>
+				<PrimaryBtn 
+					className="flex-grow py-2"
+					handleClick={addToCart}
+				>
 					Add to Cart
 				</PrimaryBtn>
 			</div>

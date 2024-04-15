@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function DecreaseBtn() {
+export default function DecreaseBtn({decreaseQty}) {
 	const HOVER_COLOR = '#FF7E1B99'
 	const PERMENANT_COLOR = '#FF7E1B'
 
@@ -11,6 +11,7 @@ export default function DecreaseBtn() {
 			className="p-1"
 			onMouseEnter={() => {setIconColor(HOVER_COLOR)}}
 			onMouseLeave={() => {setIconColor(PERMENANT_COLOR)}}
+			onClick={decreaseQty}
 		>
 			<svg 
 				width="12" 

@@ -2,11 +2,16 @@ import PrimaryBtn from './PrimaryBtn'
 import RemoveBtn from './RemoveBtn'
 
 export default function Cart({
-	selectedProducts, 
+	productsInCart,
+	setProductsInCart,
 	availableProducts,
 	cartVisibility,
 	closeCart
 }) {
+	const deleteProduct = productId => {
+		setProductsInCart(productsInCart.filter(productInCart => productInCart.id === productId))
+	}
+
 	return (
 		<>
 			{/*Backdrop*/}
@@ -36,15 +41,15 @@ export default function Cart({
 					</div>
 					<div 
 						className={`
-							p-6 ${selectedProducts.length === 0 ? 'h-44' : ''}
+							p-6 ${productsInCart.length === 0 ? 'h-44 w-80' : ''}
 						`}
 					>
-						{selectedProducts.length !== 0 ? 
+						{productsInCart.length !== 0 ? 
 							(<>
 								<div className="pb-6">
-									{selectedProducts.map(selectedProduct => {
-										const product = availableProducts.find(product => product.id === selectedProduct.id)
-										const productQty = selectedProduct.quantity
+									{productsInCart.map(productInCart => {
+										const product = availableProducts.find(product => product.id === productInCart.id )
+										const productQty = productInCart.qty
 										const totalPrice = product.price * productQty
 
 										return (
@@ -66,7 +71,7 @@ export default function Cart({
 														</span>
 													</div>
 												</div>
-												<RemoveBtn/>
+												<RemoveBtn handleClick={(product) => {deleteProduct(product.id)}}/>
 											</div>
 										)
 									})}
