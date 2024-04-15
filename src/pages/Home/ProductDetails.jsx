@@ -16,11 +16,13 @@ export default function ProductDetails({
 
 		const newProductsInCart = productsInCart.filter(prod => prod.id !== product.id)
 		
-		setProductsInCart([...newProductsInCart, {
-			id: product.id,
-			qty: newQty
-		}])
-		setQuantity(0)
+		if(quantity !== 0){
+			setProductsInCart([...newProductsInCart, {
+				id: product.id,
+				qty: newQty
+			}])
+			setQuantity(0)
+		}
 	}
 
 	return(

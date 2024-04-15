@@ -17,6 +17,8 @@ export default function SideBar({
 		const slideDistance = sideBar.clientWidth
 
 		if(didMount.current < NUM_OF_RERENDERS){
+			sideBar.classList.remove('invisible')
+			sideBar.style.left = `-${sideBar.clientWidth}px`
 			didMount.current++
 			return
 		}
@@ -59,7 +61,7 @@ export default function SideBar({
 			<section 
 				ref={sideBarRef}
 				className={`
-					fixed top-0 -left-[100%] md:hidden w-2/3 h-full z-20 bg-white
+					fixed top-0 md:hidden w-2/3 h-full z-20 bg-white invisible
 				`}
 			>
 				<div className="pl-4 pt-6 pb-6">

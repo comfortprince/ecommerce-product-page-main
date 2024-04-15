@@ -27,7 +27,7 @@ export default function Cart({
 			<div
 				className={`
 					inline-block max-md:w-full md:min-w-60 absolute max-md:left-0 
-					top-24 md:top-16 md:right-0 z-20 px-5
+					top-[5.6rem] md:top-16 md:right-0 z-20 px-5
 					${cartVisibility ? '' : 'hidden'}
 				`}
 			>
@@ -41,7 +41,7 @@ export default function Cart({
 					</div>
 					<div 
 						className={`
-							p-6 ${productsInCart.length === 0 ? 'h-44 w-80' : ''}
+							p-6 ${productsInCart.length === 0 ? 'h-44 md:w-80' : ''}
 						`}
 					>
 						{productsInCart.length !== 0 ? 
