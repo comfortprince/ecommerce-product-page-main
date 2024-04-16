@@ -1,23 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.6338ea4c.css",
-    "main.js": "/static/js/main.935afa0c.js",
-    "static/media/image-product-2.jpg": "/static/media/image-product-2.c8bb0aaccecdebb16596.jpg",
-    "static/media/image-product-1.jpg": "/static/media/image-product-1.520cc50bd13955f55cb2.jpg",
-    "static/media/image-product-3.jpg": "/static/media/image-product-3.af5c71ba9ffcc0b8b54d.jpg",
-    "static/media/image-product-4.jpg": "/static/media/image-product-4.9962862ef3eff6d65e5b.jpg",
-    "static/media/logo.svg": "/static/media/logo.4fe9c1e86cf9bf600f0c239f6a6e5317.svg",
-    "index.html": "/index.html",
-    "static/media/icon-cart.svg": "/static/media/icon-cart.539ec608f50e707c94d583ec11acf99d.svg",
-    "static/media/icon-close.svg": "/static/media/icon-close.de8cdc507c86e54894a12ee8a3a32937.svg",
-    "static/media/icon-menu.svg": "/static/media/icon-menu.c6107d03f1edcf73523ebd8cbc50a443.svg",
-    "static/media/icon-previous.svg": "/static/media/icon-previous.80616402c611cc0a6651d0b751da8a9b.svg",
-    "static/media/icon-next.svg": "/static/media/icon-next.9621183a551a9985b4bd7536c9a69c66.svg",
-    "main.6338ea4c.css.map": "/static/css/main.6338ea4c.css.map",
-    "main.935afa0c.js.map": "/static/js/main.935afa0c.js.map"
+    "main.css": "/countries-profiles-react/static/css/main.7fc5611d.css",
+    "main.js": "/countries-profiles-react/static/js/main.a8e7dd3d.js",
+    "static/media/desktop-hero-image.jpeg": "/countries-profiles-react/static/media/desktop-hero-image.b90852ccc18d598a9fc9.jpeg",
+    "static/media/cocacola.svg": "/countries-profiles-react/static/media/cocacola.e068962e55e552f2ca09d9ff8cadba1c.svg",
+    "static/media/pepsi.svg": "/countries-profiles-react/static/media/pepsi.ca95b971ca1f020769bf728bf440b922.svg",
+    "static/media/amazon.svg": "/countries-profiles-react/static/media/amazon.ae854c81f26f1b98912879d870401246.svg",
+    "static/media/airbnb.svg": "/countries-profiles-react/static/media/airbnb.39acba7b83b9865893ce9ae75669ecbc.svg",
+    "static/media/uber.svg": "/countries-profiles-react/static/media/uber.e8dc098057ad58aaf12431fba71c9c1c.svg",
+    "index.html": "/countries-profiles-react/index.html",
+    "static/media/microsoft.svg": "/countries-profiles-react/static/media/microsoft.c40b66cd705dee0cb86530a2c7d6a8c7.svg",
+    "main.7fc5611d.css.map": "/countries-profiles-react/static/css/main.7fc5611d.css.map",
+    "main.a8e7dd3d.js.map": "/countries-profiles-react/static/js/main.a8e7dd3d.js.map"
   },
   "entrypoints": [
-    "static/css/main.6338ea4c.css",
-    "static/js/main.935afa0c.js"
+    "static/css/main.7fc5611d.css",
+    "static/js/main.a8e7dd3d.js"
   ]
 }
