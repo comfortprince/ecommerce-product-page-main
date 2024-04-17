@@ -11,8 +11,6 @@ export default function SideBar({
 
 	useEffect(()=>{
 		const sideBar = sideBarRef.current
-
-		sideBar.classList.remove('invisible')
 		sideBar.classList.remove('hidden')
 		sideBar.style.left = `-${sideBar.clientWidth}px`
 	}, [])
